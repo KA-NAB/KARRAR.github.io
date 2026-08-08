@@ -7,162 +7,144 @@
 <meta name="description" content="Karrar is a Motion Designer and AI Creative based in Baghdad, Iraq — cinematic advertising, AI-generated visuals and motion systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="grain"></div>
-
-<!-- FILM LEADER INTRO -->
-<div class="leader" id="leader">
-  <svg class="leader-dial" viewBox="0 0 200 200">
-    <circle class="dial-track" cx="100" cy="100" r="86"></circle>
-    <circle class="dial-sweep" id="dialSweep" cx="100" cy="100" r="86"></circle>
-    <line x1="100" y1="100" x2="100" y2="20"></line>
-    <line x1="100" y1="100" x2="180" y2="100"></line>
-    <line x1="100" y1="100" x2="20" y2="100"></line>
-    <line x1="100" y1="100" x2="100" y2="180"></line>
-  </svg>
-  <div class="leader-number" id="leaderNumber">5</div>
-  <button class="leader-skip" id="leaderSkip">SKIP INTRO</button>
-</div>
-
-<!-- TOP HUD BAR -->
-<header class="hud hud-top">
-  <div class="hud-left">
-    <span class="rec-dot"></span>
-    <span class="hud-label">REC</span>
-    <a class="logo" href="#hero">KARRAR</a>
-  </div>
-  <nav class="hud-nav" id="hudNav">
-    <a href="#about">About</a>
-    <a href="#capabilities">Capabilities</a>
-    <a href="#sequence">Process</a>
-    <a href="#toolkit">Toolkit</a>
-    <a href="#contact">Contact</a>
+<!-- MASTHEAD -->
+<header class="masthead">
+  <a href="#cover" class="masthead-logo">KARRAR</a>
+  <button class="toc-toggle" id="tocToggle">
+    <span>Contents</span>
+    <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+  </button>
+  <nav class="toc-dropdown" id="tocDropdown">
+    <a href="#about"><span>P.02</span> About</a>
+    <a href="#capabilities"><span>P.04</span> Capabilities</a>
+    <a href="#process"><span>P.06</span> Process</a>
+    <a href="#toolkit"><span>P.08</span> Toolkit</a>
+    <a href="#contact"><span>P.10</span> Contact</a>
   </nav>
-  <div class="hud-right">
-    <a class="hud-cta" href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-    <button class="hud-menu" id="hudMenu" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
 </header>
-
-<!-- MOBILE NAV OVERLAY -->
-<div class="mobile-nav" id="mobileNav">
-  <a href="#about">About</a>
-  <a href="#capabilities">Capabilities</a>
-  <a href="#sequence">Process</a>
-  <a href="#toolkit">Toolkit</a>
-  <a href="#contact">Contact</a>
-  <a class="mobile-nav-cta" href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-</div>
 
 <main>
 
-<!-- HERO / REEL 00 -->
-<section class="reel hero" id="hero" data-chapter="Open">
-  <div class="hero-frame">
-    <p class="eyebrow">BAGHDAD, IQ — REMOTE WORLDWIDE</p>
-    <h1 class="hero-title">KARRAR</h1>
-    <p class="hero-role">MOTION DESIGNER<span class="dot">·</span>AI CREATIVE</p>
+<!-- COVER -->
+<section class="spread cover" id="cover">
+  <div class="cover-top">
+    <span>VOL. 01 — 2026</span>
+    <span>BAGHDAD, IQ</span>
   </div>
-  <div class="lower-third reveal">
-    <span class="lt-tab">NOW SHOOTING</span>
-    <p>Cinematic ads and AI-generated visuals, cut together with real craft.</p>
+
+  <div class="cover-center">
+    <h1 class="cover-title">KARRAR</h1>
+    <p class="cover-line">Motion Designer &amp; AI Creative</p>
+
+    <div class="stamp">
+      <svg viewBox="0 0 140 140">
+        <path id="stampCircle" d="M70,10 a60,60 0 1,1 -0.1,0" fill="none"/>
+        <text font-size="9.2" letter-spacing="2" fill="currentColor">
+          <textPath href="#stampCircle" startOffset="2%">SELECTED WORK · MOTION ANNUAL · SELECTED WORK ·</textPath>
+        </text>
+      </svg>
+      <span class="stamp-center">★</span>
+    </div>
   </div>
-  <div class="scroll-cue">
-    <span>SCROLL</span>
-    <i></i>
-  </div>
+
+  <ul class="cover-lines">
+    <li><a href="#about"><em>P.02</em> On craft &amp; computation — About</a></li>
+    <li><a href="#capabilities"><em>P.04</em> What's in the issue — Capabilities</a></li>
+    <li><a href="#process"><em>P.06</em> How a cut gets made — Process</a></li>
+    <li><a href="#toolkit"><em>P.08</em> The kit — Toolkit</a></li>
+    <li><a href="#contact"><em>P.10</em> Get in touch — Contact</a></li>
+  </ul>
 </section>
 
-<!-- ABOUT / REEL 01 -->
-<section class="reel about" id="about" data-chapter="About">
-  <p class="reel-tag">A101 — ABOUT</p>
-  <div class="about-grid">
-    <h2 class="about-headline">I build the <span>motion</span> behind the message.</h2>
-    <div class="about-copy reveal">
-      <p class="lead">I'm Karrar — a motion designer and AI creative working out of Baghdad, directing visuals for brands that want their ads to actually get watched.</p>
-      <p>My work sits between craft and computation: hand-built motion systems, AI-generated imagery, and an editor's eye for pacing. Every project moves through the same discipline — concept, design, motion, delivery — the same way a film moves through a cutting room.</p>
-    </div>
-  </div>
-</section>
+<!-- ABOUT — P.02 -->
+<section class="spread" id="about">
+  <div class="folio"><span>P.02</span><em>About</em></div>
 
-<!-- CAPABILITIES / REEL 02 — SHOT LIST -->
-<section class="reel capabilities" id="capabilities" data-chapter="Capabilities">
-  <p class="reel-tag">A102 — CAPABILITIES</p>
-  <h2 class="section-title">Shot List</h2>
+  <div class="spread-grid">
+    <h2 class="pull-quote">"Motion is the difference between a message people scroll past and one they stop for."</h2>
 
-  <div class="shotlist">
-    <div class="shot-row shot-head">
-      <span>CUE</span>
-      <span>SERVICE</span>
-      <span>NOTES</span>
-    </div>
-
-    <div class="shot-row reveal">
-      <span class="shot-cue">A102.1</span>
-      <span class="shot-title">Motion Design</span>
-      <span class="shot-desc">Cinematic animation, brand films and motion systems built to hold attention past the first second.</span>
-    </div>
-
-    <div class="shot-row reveal">
-      <span class="shot-cue">A102.2</span>
-      <span class="shot-title">AI Creative</span>
-      <span class="shot-desc">AI-generated visuals and generative concepts, directed and finished by hand — never left raw.</span>
-    </div>
-
-    <div class="shot-row reveal">
-      <span class="shot-cue">A102.3</span>
-      <span class="shot-title">Video Editing</span>
-      <span class="shot-desc">Cut, grade and sound-design for advertising — pace built for the platform it's cut for.</span>
-    </div>
-
-    <div class="shot-row reveal">
-      <span class="shot-cue">A102.4</span>
-      <span class="shot-title">Visual Storytelling</span>
-      <span class="shot-desc">Turning a brief into a story people remember, not just watch.</span>
+    <div class="body-col">
+      <p class="drop">I'm Karrar — a motion designer and AI creative working out of Baghdad, directing visuals for brands that want their advertising to actually get watched, not skipped.</p>
+      <p>My work sits between craft and computation: hand-built motion systems, AI-generated imagery, and an editor's instinct for pacing. Every project runs through the same discipline — concept, design, motion, delivery.</p>
     </div>
   </div>
 </section>
 
-<!-- PROCESS / REEL 03 — SEQUENCE TIMELINE -->
-<section class="reel sequence" id="sequence" data-chapter="Process">
-  <p class="reel-tag">A103 — SEQUENCE</p>
-  <h2 class="section-title">How a project cuts together</h2>
+<!-- CAPABILITIES — P.04 -->
+<section class="spread" id="capabilities">
+  <div class="folio"><span>P.04</span><em>Capabilities</em></div>
 
-  <div class="timeline-clips reveal">
-    <div class="clip">
-      <span class="clip-code">00:00–02:00</span>
-      <h3>Concept</h3>
-      <p>Understand the brand, the brief, and the visual direction before a single frame moves.</p>
+  <ol class="editorial-list">
+    <li class="reveal">
+      <span class="num">01</span>
+      <div>
+        <h3>Motion Design</h3>
+        <p>Cinematic animation, brand films and motion systems built to hold attention past the first second.</p>
+      </div>
+    </li>
+    <li class="reveal">
+      <span class="num">02</span>
+      <div>
+        <h3>AI Creative</h3>
+        <p>AI-generated visuals and generative concepts, directed and finished by hand — never left raw.</p>
+      </div>
+    </li>
+    <li class="reveal">
+      <span class="num">03</span>
+      <div>
+        <h3>Video Editing</h3>
+        <p>Cut, grade and sound-design for advertising — pace built for the platform it's running on.</p>
+      </div>
+    </li>
+    <li class="reveal">
+      <span class="num">04</span>
+      <div>
+        <h3>Visual Storytelling</h3>
+        <p>Turning a brief into a story people remember, not just watch.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- PROCESS — P.06 -->
+<section class="spread" id="process">
+  <div class="folio"><span>P.06</span><em>Process</em></div>
+  <h2 class="section-head">Contents of a project</h2>
+
+  <div class="toc-list reveal">
+    <div class="toc-row">
+      <span class="toc-name">Concept</span>
+      <span class="toc-dots"></span>
+      <span class="toc-page">Understand the brief &amp; direction</span>
     </div>
-    <div class="clip">
-      <span class="clip-code">02:00–05:00</span>
-      <h3>Design</h3>
-      <p>Build the frames, the palette and the visual language the motion will live in.</p>
+    <div class="toc-row">
+      <span class="toc-name">Design</span>
+      <span class="toc-dots"></span>
+      <span class="toc-page">Build the frames &amp; palette</span>
     </div>
-    <div class="clip">
-      <span class="clip-code">05:00–09:00</span>
-      <h3>Motion</h3>
-      <p>Animate every beat with intention — timing is the difference between good and forgettable.</p>
+    <div class="toc-row">
+      <span class="toc-name">Motion</span>
+      <span class="toc-dots"></span>
+      <span class="toc-page">Animate every beat with intent</span>
     </div>
-    <div class="clip">
-      <span class="clip-code">09:00–10:00</span>
-      <h3>Delivery</h3>
-      <p>Final export, graded and formatted for wherever it's going to run.</p>
+    <div class="toc-row">
+      <span class="toc-name">Delivery</span>
+      <span class="toc-dots"></span>
+      <span class="toc-page">Grade, export &amp; hand off</span>
     </div>
   </div>
 </section>
 
-<!-- TOOLKIT / REEL 04 -->
-<section class="reel toolkit" id="toolkit" data-chapter="Toolkit">
-  <p class="reel-tag">A104 — TOOLKIT</p>
-  <h2 class="section-title">Kit</h2>
-  <div class="toolkit-grid reveal">
+<!-- TOOLKIT — P.08 -->
+<section class="spread" id="toolkit">
+  <div class="folio"><span>P.08</span><em>Toolkit</em></div>
+
+  <div class="tag-row reveal">
     <span>After Effects</span>
     <span>Cinema 4D</span>
     <span>Blender</span>
@@ -174,47 +156,33 @@
   </div>
 </section>
 
-<!-- CONTACT / REEL 05 -->
-<section class="reel contact" id="contact" data-chapter="Contact">
-  <div class="marquee">
-    <div>AVAILABLE FOR PROJECTS ✦ BAGHDAD, IRAQ ✦ WORLDWIDE REMOTE ✦ AVAILABLE FOR PROJECTS ✦ BAGHDAD, IRAQ ✦ WORLDWIDE REMOTE ✦</div>
-  </div>
+<!-- CONTACT — P.10 (COLOPHON) -->
+<section class="spread colophon" id="contact">
+  <div class="folio"><span>P.10</span><em>Contact</em></div>
+  <h2 class="section-head">Colophon</h2>
 
-  <p class="reel-tag">A105 — CONTACT</p>
-  <h2 class="contact-headline">Let's cut<br><span>something together.</span></h2>
-
-  <div class="credits reveal">
-    <a href="mailto:vearb150@gmail.com" class="credit-line">
-      <span class="credit-role">EMAIL</span>
-      <span class="credit-value">vearb150@gmail.com ↗</span>
-    </a>
-    <a href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer" class="credit-line">
-      <span class="credit-role">WHATSAPP</span>
-      <span class="credit-value">+964 785 839 5905 ↗</span>
-    </a>
-    <a href="https://www.instagram.com/3_aot2" target="_blank" rel="noopener noreferrer" class="credit-line">
-      <span class="credit-role">INSTAGRAM</span>
-      <span class="credit-value">@3_aot2 ↗</span>
-    </a>
+  <div class="masthead-table reveal">
+    <div class="mt-row">
+      <span class="mt-role">Direct Line</span>
+      <a class="mt-value" href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer">+964 785 839 5905 ↗</a>
+    </div>
+    <div class="mt-row">
+      <span class="mt-role">Email</span>
+      <a class="mt-value" href="mailto:vearb150@gmail.com">vearb150@gmail.com ↗</a>
+    </div>
+    <div class="mt-row">
+      <span class="mt-role">Follow</span>
+      <a class="mt-value" href="https://www.instagram.com/3_aot2" target="_blank" rel="noopener noreferrer">@3_aot2 ↗</a>
+    </div>
   </div>
 </section>
 
 </main>
 
-<footer class="end-card">
-  <span>© 2026 KARRAR</span>
-  <span>END OF REEL</span>
+<footer class="colophon-footer">
+  <span>END OF ISSUE</span>
+  <span>© 2026 KARRAR — BAGHDAD, IQ</span>
 </footer>
-
-<!-- BOTTOM TIMELINE BAR -->
-<div class="hud hud-bottom">
-  <span class="tc" id="timecode">00:00:00:00</span>
-  <div class="scrub-track" id="scrubTrack">
-    <div class="scrub-fill" id="scrubFill"></div>
-    <div class="scrub-playhead" id="scrubPlayhead"></div>
-  </div>
-  <span class="chapter-label" id="chapterLabel">Open</span>
-</div>
 
 <script src="script.js"></script>
 </body>
