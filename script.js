@@ -1,73 +1,147 @@
-/* =========================
-   LOADER
-========================= */
 
-window.addEventListener("load",()=>{
-
-    document.body.classList.add("loaded");
-
-});
+// =====================================
+// KARRAR MOTION PORTFOLIO ENGINE
+// =====================================
 
 
 
-
-
-/* =========================
-   CUSTOM CURSOR
-========================= */
+// ===============================
+// CURSOR
+// ===============================
 
 
 const cursor = document.querySelector(".cursor");
 
 
-document.addEventListener("mousemove",(e)=>{
+let mouse = {
 
-    if(cursor){
+x:0,
 
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
+y:0
 
-    }
-
-});
+};
 
 
+let cursorPos={
+
+x:0,
+
+y:0
+
+};
 
 
-const interactive =
-document.querySelectorAll(
-"a, .card, .circle-btn, .tool-list span"
+
+window.addEventListener(
+"mousemove",
+(e)=>{
+
+
+mouse.x=e.clientX;
+
+mouse.y=e.clientY;
+
+
+
+// light movement
+
+document.documentElement.style.setProperty(
+"--mouseX",
+mouse.x+"px"
+);
+
+
+document.documentElement.style.setProperty(
+"--mouseY",
+mouse.y+"px"
 );
 
 
 
-interactive.forEach(item=>{
+});
 
 
-item.addEventListener("mouseenter",()=>{
 
 
-if(cursor){
+
+function cursorAnimation(){
+
+
+cursorPos.x +=
+(mouse.x-cursorPos.x)*0.15;
+
+
+cursorPos.y +=
+(mouse.y-cursorPos.y)*0.15;
+
+
+
+cursor.style.left =
+cursorPos.x+"px";
+
+
+cursor.style.top =
+cursorPos.y+"px";
+
+
+
+requestAnimationFrame(cursorAnimation);
+
+
+}
+
+
+cursorAnimation();
+
+
+
+
+
+
+
+// ===============================
+// CURSOR HOVER
+// ===============================
+
+
+const hoverElements =
+document.querySelectorAll(
+"a,.service-card,.project-card,.main-btn"
+);
+
+
+
+hoverElements.forEach(el=>{
+
+
+el.addEventListener(
+"mouseenter",
+()=>{
+
 
 cursor.style.width="70px";
+
 cursor.style.height="70px";
 
-}
+cursor.style.background=
+"rgba(0,229,255,.15)";
 
 
 });
 
 
 
-item.addEventListener("mouseleave",()=>{
+el.addEventListener(
+"mouseleave",
+()=>{
 
-
-if(cursor){
 
 cursor.style.width="25px";
+
 cursor.style.height="25px";
 
-}
+cursor.style.background=
+"transparent";
 
 
 });
@@ -81,84 +155,46 @@ cursor.style.height="25px";
 
 
 
-/* =========================
-   3D HERO TEXT MOTION
-========================= */
+
+// ===============================
+// HERO 3D MOVEMENT
+// ===============================
 
 
-const heroText =
+const hero =
 document.querySelector(".hero-title");
 
 
 
-document.addEventListener("mousemove",(e)=>{
+window.addEventListener(
+"mousemove",
+(e)=>{
 
 
-if(!heroText) return;
-
-
-
-const x =
-(e.clientX / window.innerWidth - .5) * 15;
-
-
-const y =
-(e.clientY / window.innerHeight - .5) * 15;
+if(!hero)return;
 
 
 
-heroText.style.transform =
-
-`
-perspective(1200px)
-rotateX(${-y}deg)
-rotateY(${x}deg)
-`;
+let x =
+(e.clientX/window.innerWidth-.5);
 
 
 
-});
+let y =
+(e.clientY/window.innerHeight-.5);
 
 
 
 
-
-
-
-/* =========================
-   BACKGROUND PARALLAX
-========================= */
-
-
-const background =
-document.querySelector(".background");
-
-
-
-document.addEventListener("mousemove",(e)=>{
-
-
-if(!background) return;
-
-
-
-const x =
-(e.clientX / window.innerWidth - .5);
-
-
-
-const y =
-(e.clientY / window.innerHeight - .5);
-
-
-
-background.style.transform =
+hero.style.transform=
 
 `
-translate(
-${x * 30}px,
-${y * 30}px
-)
+
+rotateX(${y*-8}deg)
+
+rotateY(${x*12}deg)
+
+translateZ(50px)
 
 `;
 
@@ -172,61 +208,73 @@ ${y * 30}px
 
 
 
-/* =========================
-   CARD 3D TILT
-========================= */
+
+
+// ===============================
+// CARD 3D TILT
+// ===============================
 
 
 const cards =
-document.querySelectorAll(".card");
+document.querySelectorAll(
+".service-card,.project-card,.stats div"
+);
 
 
 
 cards.forEach(card=>{
 
 
-card.addEventListener("mousemove",(e)=>{
+card.addEventListener(
+"mousemove",
+(e)=>{
 
 
-const rect =
+let rect =
 card.getBoundingClientRect();
 
 
 
-const x =
-e.clientX - rect.left;
+let x =
+e.clientX-rect.left;
 
 
-const y =
-e.clientY - rect.top;
-
-
-
-const centerX =
-rect.width / 2;
-
-
-const centerY =
-rect.height / 2;
+let y =
+e.clientY-rect.top;
 
 
 
-const rotateX =
-(y-centerY) / 15;
+let centerX =
+rect.width/2;
 
 
-const rotateY =
-(centerX-x) / 15;
+let centerY =
+rect.height/2;
 
 
 
-card.style.transform =
+let rotateX =
+(y-centerY)/15;
+
+
+let rotateY =
+(centerX-x)/15;
+
+
+
+
+card.style.transform=
 
 `
+
 perspective(900px)
+
 rotateX(${rotateX}deg)
+
 rotateY(${rotateY}deg)
+
 translateY(-15px)
+
 `;
 
 
@@ -237,40 +285,44 @@ translateY(-15px)
 
 
 
-card.addEventListener("mouseleave",()=>{
+card.addEventListener(
+"mouseleave",
+()=>{
 
 
-card.style.transform =
-"translateY(0) rotateX(0) rotateY(0)";
+card.style.transform="";
+
+
+
+});
 
 
 });
 
 
 
-});
 
 
 
 
 
 
-
-/* =========================
-   SCROLL REVEAL
-========================= */
+// ===============================
+// SCROLL REVEAL
+// ===============================
 
 
 const reveal =
 document.querySelectorAll(
-".section, .work, .contact, .card, .process-list div, .tool-list span"
+".service-card,.project-card,.stats div,.process-grid div,.about-grid"
 );
 
 
 
 const observer =
 new IntersectionObserver(
-(entries)=>{
+
+entries=>{
 
 
 entries.forEach(entry=>{
@@ -279,34 +331,57 @@ entries.forEach(entry=>{
 if(entry.isIntersecting){
 
 
-entry.target.classList.add("visible");
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
 
 
-observer.unobserve(entry.target);
+observer.unobserve(
+entry.target
+);
 
 
 }
+
 
 
 });
 
 
 },
+
+
 {
+
 threshold:.15
+
 }
+
 
 );
 
 
 
-reveal.forEach(item=>{
 
 
-item.classList.add("hidden");
+
+reveal.forEach(el=>{
 
 
-observer.observe(item);
+el.style.opacity="0";
+
+
+el.style.transform=
+"translateY(80px)";
+
+
+el.style.transition=
+"1s cubic-bezier(.16,1,.3,1)";
+
+
+
+observer.observe(el);
+
 
 
 });
@@ -317,92 +392,220 @@ observer.observe(item);
 
 
 
-/* =========================
-   SMOOTH NAV
-========================= */
 
 
-document.querySelectorAll("a[href^='#']")
-.forEach(link=>{
+// ===============================
+// 3D ICON FLOAT
+// ===============================
 
 
-link.addEventListener("click",(e)=>{
-
-
-const target =
-document.querySelector(
-link.getAttribute("href")
-);
-
-
-
-if(target){
-
-
-e.preventDefault();
-
-
-target.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-
-}
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-/* =========================
-   MAGNETIC BUTTON
-========================= */
-
-
-const buttons =
+const icons =
 document.querySelectorAll(
-".circle-btn"
+".icon-3d"
 );
 
 
 
-buttons.forEach(btn=>{
+icons.forEach(
+(icon,index)=>{
 
 
-btn.addEventListener("mousemove",(e)=>{
+icon.animate(
+
+[
+
+{
+
+transform:
+"translateY(0) rotateY(0deg)"
+
+},
+
+{
+
+transform:
+"translateY(-12px) rotateY(180deg)"
+
+},
+
+{
+
+transform:
+"translateY(0) rotateY(360deg)"
+
+}
+
+],
 
 
-const box =
+{
+
+
+duration:
+4000+(index*500),
+
+iterations:
+Infinity,
+
+easing:
+"ease-in-out"
+
+
+}
+
+
+);
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// ===============================
+// SIDE MENU ACTIVE
+// ===============================
+
+
+const sections =
+document.querySelectorAll(
+"section[id]"
+);
+
+
+const menuLinks =
+document.querySelectorAll(
+".side-links a"
+);
+
+
+
+
+
+window.addEventListener(
+"scroll",
+()=>{
+
+
+let current="";
+
+
+
+sections.forEach(section=>{
+
+
+let top =
+window.scrollY;
+
+
+let offset =
+section.offsetTop-300;
+
+
+
+if(top>=offset){
+
+current=
+section.getAttribute("id");
+
+}
+
+
+
+});
+
+
+
+
+menuLinks.forEach(link=>{
+
+
+link.style.color="#777";
+
+
+
+if(
+link.getAttribute("href")
+==
+"#"+current
+){
+
+
+link.style.color=
+"#00e5ff";
+
+
+}
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// ===============================
+// MAGNETIC BUTTONS
+// ===============================
+
+
+const magnetic =
+document.querySelectorAll(
+".main-btn,.circle-btn,.whatsapp-float"
+);
+
+
+
+magnetic.forEach(btn=>{
+
+
+btn.addEventListener(
+"mousemove",
+(e)=>{
+
+
+let box =
 btn.getBoundingClientRect();
 
 
 
-const x =
-e.clientX - box.left - box.width/2;
+let x =
+e.clientX-box.left-box.width/2;
 
 
-const y =
-e.clientY - box.top - box.height/2;
+let y =
+e.clientY-box.top-box.height/2;
 
 
 
-btn.style.transform =
+btn.style.transform=
 
 `
+
 translate(
+
 ${x*.2}px,
+
 ${y*.2}px
+
 )
-rotate(10deg)
+
+scale(1.05)
+
 `;
 
 
@@ -412,14 +615,43 @@ rotate(10deg)
 
 
 
-btn.addEventListener("mouseleave",()=>{
+
+btn.addEventListener(
+"mouseleave",
+()=>{
 
 
-btn.style.transform =
-"translate(0,0)";
+btn.style.transform="";
+
 
 
 });
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// ===============================
+// INTRO ANIMATION
+// ===============================
+
+
+window.addEventListener(
+"load",
+()=>{
+
+
+document.body.classList.add(
+"ready"
+);
 
 
 });
