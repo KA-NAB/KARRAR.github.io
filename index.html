@@ -1,778 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KARRAR — Motion Designer | AI Creative</title>
-
-<meta name="description" content="Karrar is a Motion Designer and AI Creative based in Baghdad, Iraq — creating cinematic advertisements, AI visuals and digital experiences.">
-
+<title>KARRAR — Motion Designer &amp; AI Creative</title>
+<meta name="description" content="Karrar is a Motion Designer and AI Creative based in Baghdad, Iraq — cinematic advertising, AI-generated visuals and motion systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
-
-
 <body>
 
+<div class="grain"></div>
 
-<!-- Cinematic layers -->
-
-<div class="noise"></div>
-
-<div class="cursor"></div>
-
-
-<!-- Floating background objects -->
-
-<div class="floating-object object-one"></div>
-
-<div class="floating-object object-two"></div>
-
-<div class="floating-object object-three"></div>
-
-
-
-<!-- NAVIGATION -->
-
-<header class="nav">
-
-
-<div class="logo">
-KARRAR<span>.</span>
+<!-- FILM LEADER INTRO -->
+<div class="leader" id="leader">
+  <svg class="leader-dial" viewBox="0 0 200 200">
+    <circle class="dial-track" cx="100" cy="100" r="86"></circle>
+    <circle class="dial-sweep" id="dialSweep" cx="100" cy="100" r="86"></circle>
+    <line x1="100" y1="100" x2="100" y2="20"></line>
+    <line x1="100" y1="100" x2="180" y2="100"></line>
+    <line x1="100" y1="100" x2="20" y2="100"></line>
+    <line x1="100" y1="100" x2="100" y2="180"></line>
+  </svg>
+  <div class="leader-number" id="leaderNumber">5</div>
+  <button class="leader-skip" id="leaderSkip">SKIP INTRO</button>
 </div>
 
-
-
-<nav class="nav-links">
-
-<a href="#about">
-About
-</a>
-
-<a href="#services">
-Services
-</a>
-
-<a href="#process">
-Process
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-</nav>
-
-
-
-<a class="nav-btn" href="#contact">
-Let's Work
-</a>
-
-
-<button class="menu-button">
-
-<span></span>
-<span></span>
-<span></span>
-
-</button>
-
-
+<!-- TOP HUD BAR -->
+<header class="hud hud-top">
+  <div class="hud-left">
+    <span class="rec-dot"></span>
+    <span class="hud-label">REC</span>
+    <a class="logo" href="#hero">KARRAR</a>
+  </div>
+  <nav class="hud-nav" id="hudNav">
+    <a href="#about">About</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#sequence">Process</a>
+    <a href="#toolkit">Toolkit</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="hud-right">
+    <a class="hud-cta" href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+    <button class="hud-menu" id="hudMenu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-
-
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-
-<div class="hero-top">
-
-<span>
-01 / BAGHDAD IRAQ
-</span>
-
-
-<span>
-MOTION DESIGN × AI CREATIVE
-</span>
-
-
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about">About</a>
+  <a href="#capabilities">Capabilities</a>
+  <a href="#sequence">Process</a>
+  <a href="#toolkit">Toolkit</a>
+  <a href="#contact">Contact</a>
+  <a class="mobile-nav-cta" href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
 </div>
 
+<main>
 
-
-
-<div class="hero-title">
-
-
-<h1 data-text="KARRAR">
-
-KARRAR
-
-</h1>
-
-
-
-<h2>
-
-CREATIVE
-
-</h2>
-
-
-</div>
-
-
-
-
-<div class="hero-bottom">
-
-
-<p>
-
-I don't just animate frames — I engineer emotion.
-Every project is built to make people stop scrolling
-and feel something real.
-
-</p>
-
-
-
-<a href="#work" class="show-btn">
-
-VIEW WORK
-
-</a>
-
-
-</div>
-
-
-
-<div class="scroll-indicator">
-
-<span></span>
-
-SCROLL
-
-</div>
-
-
-
+<!-- HERO / REEL 00 -->
+<section class="reel hero" id="hero" data-chapter="Open">
+  <div class="hero-frame">
+    <p class="eyebrow">BAGHDAD, IQ — REMOTE WORLDWIDE</p>
+    <h1 class="hero-title">KARRAR</h1>
+    <p class="hero-role">MOTION DESIGNER<span class="dot">·</span>AI CREATIVE</p>
+  </div>
+  <div class="lower-third reveal">
+    <span class="lt-tab">NOW SHOOTING</span>
+    <p>Cinematic ads and AI-generated visuals, cut together with real craft.</p>
+  </div>
+  <div class="scroll-cue">
+    <span>SCROLL</span>
+    <i></i>
+  </div>
 </section>
 
-
-
-
-
-<!-- MOVING TEXT -->
-
-
-<div class="marquee">
-
-
-<div>
-
-MOTION DESIGN ✦ AI VISUALS ✦ CINEMATIC ADS ✦ DIGITAL EXPERIENCES ✦ MOTION DESIGN ✦ AI VISUALS ✦
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- ABOUT -->
-
-
-<section class="section about" id="about">
-
-
-<div class="label">
-
-01 — ABOUT
-
-</div>
-
-
-
-<div class="about-grid">
-
-
-
-<h2 class="reveal">
-
-TURNING
-<br>
-
-<span>
-IDEAS
-</span>
-
-<br>
-
-INTO
-<br>
-
-MOTION.
-
-</h2>
-
-
-
-
-<div class="about-text reveal">
-
-
-<p class="large">
-
-I'm Karrar,
-a Motion Designer and AI Creative
-based in Baghdad, Iraq.
-
-</p>
-
-
-<p>
-
-I combine creative direction,
-motion graphics, artificial intelligence
-and visual storytelling to build
-cinematic advertising experiences
-for modern brands.
-
-</p>
-
-
-
-</div>
-
-
-</div>
-
-
-
+<!-- ABOUT / REEL 01 -->
+<section class="reel about" id="about" data-chapter="About">
+  <p class="reel-tag">A101 — ABOUT</p>
+  <div class="about-grid">
+    <h2 class="about-headline">I build the <span>motion</span> behind the message.</h2>
+    <div class="about-copy reveal">
+      <p class="lead">I'm Karrar — a motion designer and AI creative working out of Baghdad, directing visuals for brands that want their ads to actually get watched.</p>
+      <p>My work sits between craft and computation: hand-built motion systems, AI-generated imagery, and an editor's eye for pacing. Every project moves through the same discipline — concept, design, motion, delivery — the same way a film moves through a cutting room.</p>
+    </div>
+  </div>
 </section>
 
-
-
-
-
-
-
-<!-- SERVICES -->
-
-
-<section class="section services" id="services">
-
-
-<div class="label">
-
-02 — SERVICES
-
-</div>
-
-
-
-<div class="services-list">
-
-
-
-<div class="service reveal">
-
-
-<span>
-01
-</span>
-
-
-<h3>
-Motion Design
-</h3>
-
-
-<p>
-
-Cinematic animations,
-brand films and visual systems
-designed to capture attention.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="service reveal">
-
-
-<span>
-02
-</span>
-
-
-<h3>
-AI Creative
-</h3>
-
-
-<p>
-
-AI-powered visual concepts,
-generative storytelling and
-next-generation advertisements.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="service reveal">
-
-
-<span>
-03
-</span>
-
-
-<h3>
-Video Editing
-</h3>
-
-
-<p>
-
-High-impact editing,
-sound design and cinematic
-advertising production.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="service reveal">
-
-
-<span>
-04
-</span>
-
-
-<h3>
-Visual Storytelling
-</h3>
-
-
-<p>
-
-Turning ideas into emotional
-visual experiences that people
-remember.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
+<!-- CAPABILITIES / REEL 02 — SHOT LIST -->
+<section class="reel capabilities" id="capabilities" data-chapter="Capabilities">
+  <p class="reel-tag">A102 — CAPABILITIES</p>
+  <h2 class="section-title">Shot List</h2>
+
+  <div class="shotlist">
+    <div class="shot-row shot-head">
+      <span>CUE</span>
+      <span>SERVICE</span>
+      <span>NOTES</span>
+    </div>
+
+    <div class="shot-row reveal">
+      <span class="shot-cue">A102.1</span>
+      <span class="shot-title">Motion Design</span>
+      <span class="shot-desc">Cinematic animation, brand films and motion systems built to hold attention past the first second.</span>
+    </div>
+
+    <div class="shot-row reveal">
+      <span class="shot-cue">A102.2</span>
+      <span class="shot-title">AI Creative</span>
+      <span class="shot-desc">AI-generated visuals and generative concepts, directed and finished by hand — never left raw.</span>
+    </div>
+
+    <div class="shot-row reveal">
+      <span class="shot-cue">A102.3</span>
+      <span class="shot-title">Video Editing</span>
+      <span class="shot-desc">Cut, grade and sound-design for advertising — pace built for the platform it's cut for.</span>
+    </div>
+
+    <div class="shot-row reveal">
+      <span class="shot-cue">A102.4</span>
+      <span class="shot-title">Visual Storytelling</span>
+      <span class="shot-desc">Turning a brief into a story people remember, not just watch.</span>
+    </div>
+  </div>
 </section>
 
+<!-- PROCESS / REEL 03 — SEQUENCE TIMELINE -->
+<section class="reel sequence" id="sequence" data-chapter="Process">
+  <p class="reel-tag">A103 — SEQUENCE</p>
+  <h2 class="section-title">How a project cuts together</h2>
 
-
-
-
-
-
-
-
-<!-- WORK -->
-
-
-<section class="work" id="work">
-
-
-<div class="work-box reveal">
-
-
-<h2>
-
-SELECTED
-
-<span>
-
-PROJECTS
-
-</span>
-
-
-</h2>
-
-
-
-<p>
-
-A collection of cinematic projects,
-AI experiments and motion experiences
-will be revealed soon.
-
-</p>
-
-
-
-<div class="coming">
-
-COMING SOON
-
-</div>
-
-
-</div>
-
-
-
+  <div class="timeline-clips reveal">
+    <div class="clip">
+      <span class="clip-code">00:00–02:00</span>
+      <h3>Concept</h3>
+      <p>Understand the brand, the brief, and the visual direction before a single frame moves.</p>
+    </div>
+    <div class="clip">
+      <span class="clip-code">02:00–05:00</span>
+      <h3>Design</h3>
+      <p>Build the frames, the palette and the visual language the motion will live in.</p>
+    </div>
+    <div class="clip">
+      <span class="clip-code">05:00–09:00</span>
+      <h3>Motion</h3>
+      <p>Animate every beat with intention — timing is the difference between good and forgettable.</p>
+    </div>
+    <div class="clip">
+      <span class="clip-code">09:00–10:00</span>
+      <h3>Delivery</h3>
+      <p>Final export, graded and formatted for wherever it's going to run.</p>
+    </div>
+  </div>
 </section>
 
-
-
-
-
-
-
-
-
-<!-- PROCESS -->
-
-
-<section class="section process" id="process">
-
-
-<div class="label">
-
-03 — PROCESS
-
-</div>
-
-
-
-
-<div class="process-grid">
-
-
-
-<div class="reveal">
-
-
-<span>
-01
-</span>
-
-
-<h3>
-Concept
-</h3>
-
-
-<p>
-
-Understanding the idea,
-brand identity and visual direction.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="reveal">
-
-
-<span>
-02
-</span>
-
-
-<h3>
-Design
-</h3>
-
-
-<p>
-
-Creating cinematic frames,
-visual language and style.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="reveal">
-
-
-<span>
-03
-</span>
-
-
-<h3>
-Motion
-</h3>
-
-
-<p>
-
-Animating every detail
-with precision and emotion.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="reveal">
-
-
-<span>
-04
-</span>
-
-
-<h3>
-Delivery
-</h3>
-
-
-<p>
-
-Final cinematic output
-ready for modern platforms.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
+<!-- TOOLKIT / REEL 04 -->
+<section class="reel toolkit" id="toolkit" data-chapter="Toolkit">
+  <p class="reel-tag">A104 — TOOLKIT</p>
+  <h2 class="section-title">Kit</h2>
+  <div class="toolkit-grid reveal">
+    <span>After Effects</span>
+    <span>Cinema 4D</span>
+    <span>Blender</span>
+    <span>Premiere Pro</span>
+    <span>Photoshop</span>
+    <span>Runway</span>
+    <span>VEO</span>
+    <span>AI Generation</span>
+  </div>
 </section>
 
+<!-- CONTACT / REEL 05 -->
+<section class="reel contact" id="contact" data-chapter="Contact">
+  <div class="marquee">
+    <div>AVAILABLE FOR PROJECTS ✦ BAGHDAD, IRAQ ✦ WORLDWIDE REMOTE ✦ AVAILABLE FOR PROJECTS ✦ BAGHDAD, IRAQ ✦ WORLDWIDE REMOTE ✦</div>
+  </div>
 
+  <p class="reel-tag">A105 — CONTACT</p>
+  <h2 class="contact-headline">Let's cut<br><span>something together.</span></h2>
 
-
-
-
-
-
-
-<!-- TOOLS -->
-
-
-<section class="section tools">
-
-
-<div class="label">
-
-04 — TOOLS
-
-</div>
-
-
-
-<div class="tools-grid reveal">
-
-
-<span>
-After Effects
-</span>
-
-
-<span>
-Cinema 4D
-</span>
-
-
-<span>
-Blender
-</span>
-
-
-<span>
-Premiere Pro
-</span>
-
-
-<span>
-Photoshop
-</span>
-
-
-<span>
-AI Generation
-</span>
-
-
-<span>
-Runway
-</span>
-
-
-<span>
-VEO
-</span>
-
-
-</div>
-
-
-
+  <div class="credits reveal">
+    <a href="mailto:vearb150@gmail.com" class="credit-line">
+      <span class="credit-role">EMAIL</span>
+      <span class="credit-value">vearb150@gmail.com ↗</span>
+    </a>
+    <a href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer" class="credit-line">
+      <span class="credit-role">WHATSAPP</span>
+      <span class="credit-value">+964 785 839 5905 ↗</span>
+    </a>
+    <a href="https://www.instagram.com/3_aot2" target="_blank" rel="noopener noreferrer" class="credit-line">
+      <span class="credit-role">INSTAGRAM</span>
+      <span class="credit-value">@3_aot2 ↗</span>
+    </a>
+  </div>
 </section>
 
+</main>
 
-
-
-
-
-
-
-
-<!-- CONTACT -->
-
-
-<section class="contact" id="contact">
-
-
-<h2 class="reveal">
-
-LET'S CREATE
-
-<span>
-
-SOMETHING MOVING.
-
-</span>
-
-
-</h2>
-
-
-
-
-<a class="email reveal" href="mailto:vearb150@gmail.com">
-
-vearb150@gmail.com ↗
-
-</a>
-
-
-
-<a class="whatsapp reveal" href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer">
-
-WhatsApp Me ↗
-
-</a>
-
-
-
-
-<div class="social reveal">
-
-
-<a href="https://www.instagram.com/3_aot2" target="_blank" rel="noopener noreferrer">
-Instagram
-</a>
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-<footer>
-
-
-<span>
-
-© 2026 KARRAR
-
-</span>
-
-
-<span>
-
-MOTION DESIGNER / AI CREATIVE
-
-</span>
-
-
+<footer class="end-card">
+  <span>© 2026 KARRAR</span>
+  <span>END OF REEL</span>
 </footer>
 
-
-
-
-
-
+<!-- BOTTOM TIMELINE BAR -->
+<div class="hud hud-bottom">
+  <span class="tc" id="timecode">00:00:00:00</span>
+  <div class="scrub-track" id="scrubTrack">
+    <div class="scrub-fill" id="scrubFill"></div>
+    <div class="scrub-playhead" id="scrubPlayhead"></div>
+  </div>
+  <span class="chapter-label" id="chapterLabel">Open</span>
+</div>
 
 <script src="script.js"></script>
-
-
 </body>
-
 </html>
