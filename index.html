@@ -7,14 +7,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KARRAR — Motion Designer & AI Creative</title>
+<title>KARRAR — Motion Designer | AI Creative</title>
 
-<meta name="description"
-content="Karrar creates cinematic motion design, AI visuals and advertising experiences.">
+<meta name="description" content="Karrar is a Motion Designer and AI Creative based in Baghdad, Iraq — creating cinematic advertisements, AI visuals and digital experiences.">
 
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -22,108 +25,68 @@ content="Karrar creates cinematic motion design, AI visuals and advertising expe
 <body>
 
 
+<!-- Cinematic layers -->
+
 <div class="noise"></div>
 
 <div class="cursor"></div>
 
 
+<!-- Floating background objects -->
 
-<!-- BACKGROUND 3D OBJECTS -->
+<div class="floating-object object-one"></div>
 
-<div class="orb orb-cyan"></div>
+<div class="floating-object object-two"></div>
 
-<div class="orb orb-purple"></div>
-
-<div class="floating-cube cube-one"></div>
-
-<div class="floating-cube cube-two"></div>
+<div class="floating-object object-three"></div>
 
 
 
+<!-- NAVIGATION -->
 
-
-<!-- SIDE MENU -->
-
-<aside class="side-menu">
-
-
-<div class="side-logo">
-
-K
-
-</div>
-
-
-
-<div class="side-links">
-
-
-<a href="#about">
-01
-<span>ABOUT</span>
-</a>
-
-
-<a href="#services">
-02
-<span>SERVICES</span>
-</a>
-
-
-<a href="#work">
-03
-<span>WORK</span>
-</a>
-
-
-<a href="#process">
-04
-<span>PROCESS</span>
-</a>
-
-
-<a href="#contact">
-05
-<span>CONTACT</span>
-</a>
-
-
-</div>
-
-
-
-<div class="side-line"></div>
-
-
-</aside>
-
-
-
-
-
-
-
-
-<!-- TOP BAR -->
-
-
-<header class="topbar">
+<header class="nav">
 
 
 <div class="logo">
-
 KARRAR<span>.</span>
-
 </div>
 
 
 
-<div class="location">
+<nav class="nav-links">
 
-BAGHDAD / IRAQ
+<a href="#about">
+About
+</a>
 
-</div>
+<a href="#services">
+Services
+</a>
 
+<a href="#process">
+Process
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</nav>
+
+
+
+<a class="nav-btn" href="#contact">
+Let's Work
+</a>
+
+
+<button class="menu-button">
+
+<span></span>
+<span></span>
+<span></span>
+
+</button>
 
 
 </header>
@@ -132,19 +95,25 @@ BAGHDAD / IRAQ
 
 
 
-
-
 <!-- HERO -->
-
 
 <section class="hero">
 
 
-<div class="hero-tag">
+<div class="hero-top">
 
-AI MOTION STUDIO
+<span>
+01 / BAGHDAD IRAQ
+</span>
+
+
+<span>
+MOTION DESIGN × AI CREATIVE
+</span>
+
 
 </div>
+
 
 
 
@@ -161,7 +130,7 @@ KARRAR
 
 <h2>
 
-MOTION
+CREATIVE
 
 </h2>
 
@@ -171,47 +140,33 @@ MOTION
 
 
 
+<div class="hero-bottom">
 
-<p class="hero-description">
 
-Creating cinematic motion,
-AI-powered visuals and advertising
-experiences for modern brands.
+<p>
+
+I don't just animate frames — I engineer emotion.
+Every project is built to make people stop scrolling
+and feel something real.
 
 </p>
 
 
 
-
-<div class="hero-actions">
-
-
-<a class="main-btn"
-href="https://wa.me/9647858395905">
-
-START PROJECT
-
-</a>
-
-
-
-<a class="circle-btn"
-href="#work">
+<a href="#work" class="show-btn">
 
 VIEW WORK
 
 </a>
 
 
-
 </div>
 
 
 
+<div class="scroll-indicator">
 
-
-
-<div class="scroll">
+<span></span>
 
 SCROLL
 
@@ -225,24 +180,20 @@ SCROLL
 
 
 
-
-
-
-
-<!-- MARQUEE -->
+<!-- MOVING TEXT -->
 
 
 <div class="marquee">
 
+
 <div>
 
-MOTION DESIGN ✦ AI CREATIVE ✦ CINEMATIC ADS ✦ VISUAL STORYTELLING ✦ 3D DESIGN ✦
+MOTION DESIGN ✦ AI VISUALS ✦ CINEMATIC ADS ✦ DIGITAL EXPERIENCES ✦ MOTION DESIGN ✦ AI VISUALS ✦
 
 </div>
 
+
 </div>
-
-
 
 
 
@@ -253,10 +204,10 @@ MOTION DESIGN ✦ AI CREATIVE ✦ CINEMATIC ADS ✦ VISUAL STORYTELLING ✦ 3D D
 <!-- ABOUT -->
 
 
-<section class="section" id="about">
+<section class="section about" id="about">
 
 
-<div class="section-number">
+<div class="label">
 
 01 — ABOUT
 
@@ -268,20 +219,18 @@ MOTION DESIGN ✦ AI CREATIVE ✦ CINEMATIC ADS ✦ VISUAL STORYTELLING ✦ 3D D
 
 
 
-<div>
-
-
-<h2>
+<h2 class="reveal">
 
 TURNING
+<br>
 
 <span>
 IDEAS
 </span>
 
+<br>
 
 INTO
-
 <br>
 
 MOTION.
@@ -289,24 +238,15 @@ MOTION.
 </h2>
 
 
-</div>
 
 
+<div class="about-text reveal">
 
 
-<div class="about-text">
+<p class="large">
 
-
-<h3>
-
-I'm Karrar.
-
-</h3>
-
-
-<p>
-
-Motion Designer and AI Creative
+I'm Karrar,
+a Motion Designer and AI Creative
 based in Baghdad, Iraq.
 
 </p>
@@ -314,12 +254,14 @@ based in Baghdad, Iraq.
 
 <p>
 
-I combine motion graphics,
-artificial intelligence and cinematic
-storytelling to create visual experiences
-for brands.
+I combine creative direction,
+motion graphics, artificial intelligence
+and visual storytelling to build
+cinematic advertising experiences
+for modern brands.
 
 </p>
+
 
 
 </div>
@@ -330,98 +272,6 @@ for brands.
 
 
 </section>
-
-
-
-
-
-
-
-
-
-<!-- EXPERIENCE -->
-
-
-<section class="experience section">
-
-
-<div class="section-number">
-
-02 — EXPERIENCE
-
-</div>
-
-
-
-<div class="stats">
-
-
-
-<div>
-
-<strong>
-2+
-</strong>
-
-<p>
-Years Creative Experience
-</p>
-
-</div>
-
-
-
-<div>
-
-<strong>
-100+
-</strong>
-
-<p>
-AI Visual Experiments
-</p>
-
-</div>
-
-
-
-
-<div>
-
-<strong>
-50+
-</strong>
-
-<p>
-Advertising Concepts
-</p>
-
-</div>
-
-
-
-
-<div>
-
-<strong>
-24/7
-</strong>
-
-<p>
-Creative Thinking
-</p>
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-
 
 
 
@@ -432,43 +282,39 @@ Creative Thinking
 <!-- SERVICES -->
 
 
-<section class="section" id="services">
+<section class="section services" id="services">
 
 
-<div class="section-number">
+<div class="label">
 
-03 — SERVICES
-
-</div>
-
-
-
-
-<div class="service-grid">
-
-
-
-<div class="service-card">
-
-
-<div class="icon-3d motion-icon">
-
-◈
+02 — SERVICES
 
 </div>
+
+
+
+<div class="services-list">
+
+
+
+<div class="service reveal">
+
+
+<span>
+01
+</span>
 
 
 <h3>
-
 Motion Design
-
 </h3>
 
 
 <p>
 
 Cinematic animations,
-brand films and visual systems.
+brand films and visual systems
+designed to capture attention.
 
 </p>
 
@@ -479,29 +325,24 @@ brand films and visual systems.
 
 
 
+<div class="service reveal">
 
 
-<div class="service-card">
-
-
-<div class="icon-3d ai-icon">
-
-✦
-
-</div>
+<span>
+02
+</span>
 
 
 <h3>
-
 AI Creative
-
 </h3>
 
 
 <p>
 
-AI generated visuals,
-concept development and storytelling.
+AI-powered visual concepts,
+generative storytelling and
+next-generation advertisements.
 
 </p>
 
@@ -512,30 +353,24 @@ concept development and storytelling.
 
 
 
+<div class="service reveal">
 
 
-
-<div class="service-card">
-
-
-<div class="icon-3d video-icon">
-
-◉
-
-</div>
+<span>
+03
+</span>
 
 
 <h3>
-
 Video Editing
-
 </h3>
 
 
 <p>
 
-High impact editing,
-visual effects and commercials.
+High-impact editing,
+sound design and cinematic
+advertising production.
 
 </p>
 
@@ -546,29 +381,24 @@ visual effects and commercials.
 
 
 
+<div class="service reveal">
 
 
-<div class="service-card">
-
-
-<div class="icon-3d story-icon">
-
-◇
-
-</div>
+<span>
+04
+</span>
 
 
 <h3>
-
 Visual Storytelling
-
 </h3>
 
 
 <p>
 
-Turning ideas into memorable
-visual experiences.
+Turning ideas into emotional
+visual experiences that people
+remember.
 
 </p>
 
@@ -577,9 +407,7 @@ visual experiences.
 
 
 
-
 </div>
-
 
 
 </section>
@@ -592,86 +420,45 @@ visual experiences.
 
 
 
-<!-- PROJECTS -->
+<!-- WORK -->
 
 
-<section class="projects section" id="work">
+<section class="work" id="work">
 
 
-<div class="section-number">
-
-04 — SELECTED WORK
-
-</div>
+<div class="work-box reveal">
 
 
+<h2>
 
-<div class="project-grid">
+SELECTED
+
+<span>
+
+PROJECTS
+
+</span>
 
 
-
-<div class="project-card">
-
-<div class="project-image">
-
-AI COMMERCIAL
-
-</div>
-
-<h3>
-
-Cinematic Product Films
-
-</h3>
-
-</div>
+</h2>
 
 
 
+<p>
+
+A collection of cinematic projects,
+AI experiments and motion experiences
+will be revealed soon.
+
+</p>
 
 
-<div class="project-card">
 
-<div class="project-image">
+<div class="coming">
 
-AI VISUALS
+COMING SOON
 
 </div>
-
-
-<h3>
-
-Generative Experiences
-
-</h3>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="project-card">
-
-<div class="project-image">
-
-MOTION
-
-</div>
-
-
-<h3>
-
-Brand Motion Design
-
-</h3>
-
-
-</div>
-
 
 
 </div>
@@ -691,12 +478,12 @@ Brand Motion Design
 <!-- PROCESS -->
 
 
-<section class="section" id="process">
+<section class="section process" id="process">
 
 
-<div class="section-number">
+<div class="label">
 
-05 — PROCESS
+03 — PROCESS
 
 </div>
 
@@ -707,49 +494,181 @@ Brand Motion Design
 
 
 
-<div>
+<div class="reveal">
 
+
+<span>
 01
+</span>
+
 
 <h3>
 Concept
 </h3>
 
+
+<p>
+
+Understanding the idea,
+brand identity and visual direction.
+
+</p>
+
+
 </div>
 
 
-<div>
 
+
+
+<div class="reveal">
+
+
+<span>
 02
+</span>
+
 
 <h3>
 Design
 </h3>
 
+
+<p>
+
+Creating cinematic frames,
+visual language and style.
+
+</p>
+
+
 </div>
 
 
-<div>
 
+
+
+<div class="reveal">
+
+
+<span>
 03
+</span>
+
 
 <h3>
 Motion
 </h3>
 
+
+<p>
+
+Animating every detail
+with precision and emotion.
+
+</p>
+
+
 </div>
 
 
-<div>
 
+
+
+<div class="reveal">
+
+
+<span>
 04
+</span>
+
 
 <h3>
 Delivery
 </h3>
 
+
+<p>
+
+Final cinematic output
+ready for modern platforms.
+
+</p>
+
+
 </div>
 
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TOOLS -->
+
+
+<section class="section tools">
+
+
+<div class="label">
+
+04 — TOOLS
+
+</div>
+
+
+
+<div class="tools-grid reveal">
+
+
+<span>
+After Effects
+</span>
+
+
+<span>
+Cinema 4D
+</span>
+
+
+<span>
+Blender
+</span>
+
+
+<span>
+Premiere Pro
+</span>
+
+
+<span>
+Photoshop
+</span>
+
+
+<span>
+AI Generation
+</span>
+
+
+<span>
+Runway
+</span>
+
+
+<span>
+VEO
+</span>
 
 
 </div>
@@ -772,7 +691,7 @@ Delivery
 <section class="contact" id="contact">
 
 
-<h2>
+<h2 class="reveal">
 
 LET'S CREATE
 
@@ -782,46 +701,38 @@ SOMETHING MOVING.
 
 </span>
 
+
 </h2>
 
 
 
-<div class="contact-links">
 
+<a class="email reveal" href="mailto:vearb150@gmail.com">
 
-<a href="https://wa.me/9647858395905">
-
-💬 WhatsApp
+vearb150@gmail.com ↗
 
 </a>
 
 
 
-<a href="mailto:vearb150@gmail.com">
+<a class="whatsapp reveal" href="https://wa.me/9647858395905" target="_blank" rel="noopener noreferrer">
 
-✉ Email
+WhatsApp Me ↗
 
 </a>
 
 
 
-<a href="https://www.instagram.com/3_aot2/">
 
-◎ Instagram
+<div class="social reveal">
 
+
+<a href="https://www.instagram.com/3_aot2" target="_blank" rel="noopener noreferrer">
+Instagram
 </a>
 
 
 </div>
-
-
-
-
-<p>
-
-Baghdad, Iraq
-
-</p>
 
 
 
@@ -834,33 +745,26 @@ Baghdad, Iraq
 
 
 
-<!-- FLOATING WHATSAPP -->
-
-
-<a class="whatsapp-float"
-href="https://wa.me/9647858395905">
-
-💬
-
-</a>
-
-
-
-
-
-
-
 <footer>
 
 
-KARRAR © 2026
+<span>
 
-<br>
+© 2026 KARRAR
+
+</span>
+
+
+<span>
 
 MOTION DESIGNER / AI CREATIVE
 
+</span>
+
 
 </footer>
+
+
 
 
 
