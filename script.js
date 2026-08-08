@@ -1,488 +1,196 @@
 // =====================================
-// KARRAR PORTFOLIO
-// CINEMATIC MOTION ENGINE
+// KARRAR PORTFOLIO — EDIT SUITE ENGINE
 // =====================================
 
-
-
-// ================================
-// MOUSE LIGHT FOLLOW
-// ================================
-
-const root = document.documentElement;
-
-
-window.addEventListener("mousemove", (e)=>{
-
-
-    const x = (e.clientX / window.innerWidth) * 100;
-
-    const y = (e.clientY / window.innerHeight) * 100;
-
-
-    root.style.setProperty("--mouseX", x + "%");
-
-    root.style.setProperty("--mouseY", y + "%");
-
-
-});
-
-
-
-
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // ================================
-// CUSTOM CURSOR
+// FILM LEADER INTRO
 // ================================
-
-
-const cursor = document.querySelector(".cursor");
-
-
-let mouseX = 0;
-
-let mouseY = 0;
-
-
-let cursorX = 0;
-
-let cursorY = 0;
-
-
-
-window.addEventListener("mousemove",(e)=>{
-
-
-    mouseX = e.clientX;
-
-    mouseY = e.clientY;
-
-
-});
-
-
-
-function animateCursor(){
-
-
-    cursorX += (mouseX - cursorX) * .15;
-
-    cursorY += (mouseY - cursorY) * .15;
-
-
-    cursor.style.left = cursorX + "px";
-
-    cursor.style.top = cursorY + "px";
-
-
-    requestAnimationFrame(animateCursor);
-
-
-}
-
-
-animateCursor();
-
-
-
-
-
-// Cursor hover effect
-
-
-const interactive = document.querySelectorAll(
-
-"a, button, .service, .process-grid div"
-
-);
-
-
-
-interactive.forEach(item=>{
-
-
-    item.addEventListener("mouseenter",()=>{
-
-
-        cursor.style.width="70px";
-
-        cursor.style.height="70px";
-
-        cursor.style.background="rgba(0,229,255,.15)";
-
-
-    });
-
-
-
-    item.addEventListener("mouseleave",()=>{
-
-
-        cursor.style.width="30px";
-
-        cursor.style.height="30px";
-
-        cursor.style.background="transparent";
-
-
-    });
-
-
-});
-
-
-
-
-
-
-
-
-// ================================
-// HERO 3D PARALLAX
-// ================================
-
-
-const heroTitle = document.querySelector(".hero-title");
-
-
-
-window.addEventListener("mousemove",(e)=>{
-
-
-    const x =
-
-    (e.clientX / window.innerWidth - .5);
-
-
-
-    const y =
-
-    (e.clientY / window.innerHeight - .5);
-
-
-
-    if(heroTitle){
-
-
-        heroTitle.style.transform = `
-
-        rotateX(${y * -8}deg)
-
-        rotateY(${x * 10}deg)
-
-        translateZ(40px)
-
-        `;
-
-
+(function initLeader(){
+
+  const leader = document.getElementById("leader");
+  const numberEl = document.getElementById("leaderNumber");
+  const sweep = document.getElementById("dialSweep");
+  const skipBtn = document.getElementById("leaderSkip");
+
+  const alreadySeen = sessionStorage.getItem("karrar_leader_seen");
+
+  function closeLeader(){
+    leader.classList.add("leader-out");
+    sessionStorage.setItem("karrar_leader_seen", "1");
+    setTimeout(()=>{ leader.style.display = "none"; }, 650);
+  }
+
+  if(reducedMotion || alreadySeen){
+    leader.style.display = "none";
+    return;
+  }
+
+  const CIRCUM = 540;
+  let count = 5;
+  numberEl.textContent = count;
+
+  function tick(){
+    const progress = (5 - count + 1) / 5;
+    sweep.style.strokeDashoffset = CIRCUM - (CIRCUM * progress);
+
+    if(count <= 1){
+      setTimeout(closeLeader, 450);
+      return;
     }
 
+    setTimeout(()=>{
+      count -= 1;
+      numberEl.textContent = count;
+      tick();
+    }, 450);
+  }
 
-});
+  tick();
 
+  skipBtn.addEventListener("click", closeLeader);
 
-
-
-
-
+})();
 
 
 // ================================
-// FLOATING BACKGROUND PARALLAX
+// MOBILE NAV
 // ================================
+(function initMobileNav(){
+
+  const menuBtn = document.getElementById("hudMenu");
+  const mobileNav = document.getElementById("mobileNav");
+
+  if(!menuBtn) return;
+
+  menuBtn.addEventListener("click", ()=>{
+    mobileNav.classList.toggle("open");
+  });
+
+  mobileNav.querySelectorAll("a").forEach(link=>{
+    link.addEventListener("click", ()=>{
+      mobileNav.classList.remove("open");
+    });
+  });
+
+})();
 
 
-const objects = document.querySelectorAll(
-".floating-object"
-);
+// ================================
+// TIMELINE / SCRUB BAR
+// ================================
+(function initTimeline(){
 
+  const timecodeEl = document.getElementById("timecode");
+  const track = document.getElementById("scrubTrack");
+  const fill = document.getElementById("scrubFill");
+  const playhead = document.getElementById("scrubPlayhead");
+  const chapterLabel = document.getElementById("chapterLabel");
 
+  const sections = Array.from(document.querySelectorAll(".reel[data-chapter]"));
 
-window.addEventListener("mousemove",(e)=>{
+  const FPS = 24;
+  const TOTAL_SECONDS = 360; // fake 6-minute runtime for the whole "cut"
+  const TOTAL_FRAMES = FPS * TOTAL_SECONDS;
 
+  function pad(n){
+    return n.toString().padStart(2, "0");
+  }
 
-const x =
+  function frameToTimecode(frames){
+    const totalSecs = Math.floor(frames / FPS);
+    const ff = frames % FPS;
+    const hh = Math.floor(totalSecs / 3600);
+    const mm = Math.floor((totalSecs % 3600) / 60);
+    const ss = totalSecs % 60;
+    return `${pad(hh)}:${pad(mm)}:${pad(ss)}:${pad(ff)}`;
+  }
 
-(e.clientX / window.innerWidth - .5);
+  function scrollableHeight(){
+    return Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+  }
 
+  function buildMarkers(){
+    track.querySelectorAll(".scrub-marker").forEach(m=>m.remove());
 
+    sections.forEach(section=>{
+      const pct = Math.min(100, Math.max(0, (section.offsetTop / scrollableHeight()) * 100));
+      const marker = document.createElement("div");
+      marker.className = "scrub-marker";
+      marker.style.left = pct + "%";
+      marker.title = section.dataset.chapter;
+      marker.addEventListener("click", ()=>{
+        section.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+      });
+      track.appendChild(marker);
+    });
+  }
 
-const y =
+  let ticking = false;
 
-(e.clientY / window.innerHeight - .5);
+  function updateOnScroll(){
+    const frac = Math.min(1, Math.max(0, window.scrollY / scrollableHeight()));
 
+    fill.style.width = (frac * 100) + "%";
+    playhead.style.left = (frac * 100) + "%";
 
+    const frames = Math.floor(frac * TOTAL_FRAMES);
+    timecodeEl.textContent = frameToTimecode(frames);
 
-objects.forEach((obj,index)=>{
+    ticking = false;
+  }
 
+  window.addEventListener("scroll", ()=>{
+    if(!ticking){
+      requestAnimationFrame(updateOnScroll);
+      ticking = true;
+    }
+  });
 
-    const speed = (index + 1) * 18;
+  window.addEventListener("resize", buildMarkers);
 
+  window.addEventListener("load", ()=>{
+    buildMarkers();
+    updateOnScroll();
+  });
 
-    obj.style.transform = `
+  // fallback in case load already fired
+  buildMarkers();
+  updateOnScroll();
 
-    translate3d(
+  // ================================
+  // ACTIVE CHAPTER TRACKING
+  // ================================
+  const chapterObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        chapterLabel.textContent = entry.target.dataset.chapter;
+      }
+    });
+  }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
 
-    ${x * speed}px,
+  sections.forEach(section=> chapterObserver.observe(section));
 
-    ${y * speed}px,
-
-    0
-
-    )
-
-    `;
-
-
-
-});
-
-
-
-});
-
-
-
-
-
-
+})();
 
 
 // ================================
 // SCROLL REVEAL
 // ================================
+(function initReveal(){
 
+  const reveals = document.querySelectorAll(".reveal");
 
-const reveals = document.querySelectorAll(
-".reveal"
-);
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
+  reveals.forEach(el => observer.observe(el));
 
-
-const observer = new IntersectionObserver(
-
-(entries)=>{
-
-
-entries.forEach(entry=>{
-
-
-    if(entry.isIntersecting){
-
-
-        entry.target.classList.add(
-            "active"
-        );
-
-
-        observer.unobserve(
-            entry.target
-        );
-
-
-    }
-
-
-
-});
-
-
-},
-
-{
-
-threshold:.15
-
-}
-
-);
-
-
-
-
-
-reveals.forEach(el=>{
-
-
-observer.observe(el);
-
-
-});
-
-
-
-
-
-
-
-
-
-// ================================
-// NAV BACKGROUND ON SCROLL
-// ================================
-
-
-const nav = document.querySelector(".nav");
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-if(window.scrollY > 80){
-
-
-nav.style.background =
-
-"rgba(3,3,3,.85)";
-
-
-nav.style.backdropFilter=
-
-"blur(15px)";
-
-
-}
-
-else{
-
-
-nav.style.background=
-
-"linear-gradient(black,transparent)";
-
-
-}
-
-
-});
-
-
-
-
-
-
-
-
-
-// ================================
-// SMOOTH MAGNETIC BUTTON
-// ================================
-
-
-const buttons = document.querySelectorAll(
-".show-btn,.nav-btn"
-);
-
-
-
-buttons.forEach(btn=>{
-
-
-btn.addEventListener("mousemove",(e)=>{
-
-
-const rect = btn.getBoundingClientRect();
-
-
-const x = e.clientX - rect.left - rect.width/2;
-
-const y = e.clientY - rect.top - rect.height/2;
-
-
-
-btn.style.transform =
-
-`
-
-translate(
-
-${x*.15}px,
-
-${y*.15}px
-
-)
-
-scale(1.05)
-
-`;
-
-
-
-});
-
-
-
-
-btn.addEventListener("mouseleave",()=>{
-
-
-btn.style.transform="";
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-
-// ================================
-// PAGE LOAD CINEMATIC INTRO
-// ================================
-
-
-window.addEventListener(
-"load",
-()=>{
-
-
-document.body.classList.add(
-"loaded"
-);
-
-
-});
-
-
-
-
-
-
-
-// ================================
-// MOBILE MENU
-// ================================
-
-
-const menu =
-document.querySelector(".menu-button");
-
-
-
-const links =
-document.querySelector(".nav-links");
-
-
-
-if(menu){
-
-
-menu.addEventListener("click",()=>{
-
-
-links.classList.toggle(
-"open"
-);
-
-
-});
-
-
-}
+})();
