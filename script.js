@@ -1,150 +1,131 @@
-
 // =====================================
-// KARRAR MOTION PORTFOLIO ENGINE
+// KARRAR PORTFOLIO
+// CINEMATIC MOTION ENGINE
 // =====================================
 
 
 
-// ===============================
-// CURSOR
-// ===============================
+// ================================
+// MOUSE LIGHT FOLLOW
+// ================================
+
+const root = document.documentElement;
+
+
+window.addEventListener("mousemove", (e)=>{
+
+
+    const x = (e.clientX / window.innerWidth) * 100;
+
+    const y = (e.clientY / window.innerHeight) * 100;
+
+
+    root.style.setProperty("--mouseX", x + "%");
+
+    root.style.setProperty("--mouseY", y + "%");
+
+
+});
+
+
+
+
+
+// ================================
+// CUSTOM CURSOR
+// ================================
 
 
 const cursor = document.querySelector(".cursor");
 
 
-let mouse = {
+let mouseX = 0;
 
-x:0,
-
-y:0
-
-};
+let mouseY = 0;
 
 
-let cursorPos={
+let cursorX = 0;
 
-x:0,
-
-y:0
-
-};
+let cursorY = 0;
 
 
 
-window.addEventListener(
-"mousemove",
-(e)=>{
+window.addEventListener("mousemove",(e)=>{
 
 
-mouse.x=e.clientX;
+    mouseX = e.clientX;
 
-mouse.y=e.clientY;
-
-
-
-// light movement
-
-document.documentElement.style.setProperty(
-"--mouseX",
-mouse.x+"px"
-);
-
-
-document.documentElement.style.setProperty(
-"--mouseY",
-mouse.y+"px"
-);
-
+    mouseY = e.clientY;
 
 
 });
 
 
 
+function animateCursor(){
 
 
-function cursorAnimation(){
+    cursorX += (mouseX - cursorX) * .15;
+
+    cursorY += (mouseY - cursorY) * .15;
 
 
-cursorPos.x +=
-(mouse.x-cursorPos.x)*0.15;
+    cursor.style.left = cursorX + "px";
+
+    cursor.style.top = cursorY + "px";
 
 
-cursorPos.y +=
-(mouse.y-cursorPos.y)*0.15;
-
-
-
-cursor.style.left =
-cursorPos.x+"px";
-
-
-cursor.style.top =
-cursorPos.y+"px";
-
-
-
-requestAnimationFrame(cursorAnimation);
+    requestAnimationFrame(animateCursor);
 
 
 }
 
 
-cursorAnimation();
+animateCursor();
 
 
 
 
 
+// Cursor hover effect
 
 
-// ===============================
-// CURSOR HOVER
-// ===============================
+const interactive = document.querySelectorAll(
 
+"a, button, .service, .process-grid div"
 
-const hoverElements =
-document.querySelectorAll(
-"a,.service-card,.project-card,.main-btn"
 );
 
 
 
-hoverElements.forEach(el=>{
+interactive.forEach(item=>{
 
 
-el.addEventListener(
-"mouseenter",
-()=>{
+    item.addEventListener("mouseenter",()=>{
 
 
-cursor.style.width="70px";
+        cursor.style.width="70px";
 
-cursor.style.height="70px";
+        cursor.style.height="70px";
 
-cursor.style.background=
-"rgba(0,229,255,.15)";
+        cursor.style.background="rgba(0,229,255,.15)";
 
 
-});
+    });
 
 
 
-el.addEventListener(
-"mouseleave",
-()=>{
+    item.addEventListener("mouseleave",()=>{
 
 
-cursor.style.width="25px";
+        cursor.style.width="30px";
 
-cursor.style.height="25px";
+        cursor.style.height="30px";
 
-cursor.style.background=
-"transparent";
+        cursor.style.background="transparent";
 
 
-});
+    });
 
 
 });
@@ -156,48 +137,45 @@ cursor.style.background=
 
 
 
-// ===============================
-// HERO 3D MOVEMENT
-// ===============================
+// ================================
+// HERO 3D PARALLAX
+// ================================
 
 
-const hero =
-document.querySelector(".hero-title");
-
-
-
-window.addEventListener(
-"mousemove",
-(e)=>{
-
-
-if(!hero)return;
+const heroTitle = document.querySelector(".hero-title");
 
 
 
-let x =
-(e.clientX/window.innerWidth-.5);
+window.addEventListener("mousemove",(e)=>{
+
+
+    const x =
+
+    (e.clientX / window.innerWidth - .5);
 
 
 
-let y =
-(e.clientY/window.innerHeight-.5);
+    const y =
+
+    (e.clientY / window.innerHeight - .5);
 
 
 
+    if(heroTitle){
 
-hero.style.transform=
 
-`
+        heroTitle.style.transform = `
 
-rotateX(${y*-8}deg)
+        rotateX(${y * -8}deg)
 
-rotateY(${x*12}deg)
+        rotateY(${x * 10}deg)
 
-translateZ(50px)
+        translateZ(40px)
 
-`;
+        `;
 
+
+    }
 
 
 });
@@ -209,92 +187,56 @@ translateZ(50px)
 
 
 
+// ================================
+// FLOATING BACKGROUND PARALLAX
+// ================================
 
-// ===============================
-// CARD 3D TILT
-// ===============================
 
-
-const cards =
-document.querySelectorAll(
-".service-card,.project-card,.stats div"
+const objects = document.querySelectorAll(
+".floating-object"
 );
 
 
 
-cards.forEach(card=>{
+window.addEventListener("mousemove",(e)=>{
 
 
-card.addEventListener(
-"mousemove",
-(e)=>{
+const x =
 
-
-let rect =
-card.getBoundingClientRect();
+(e.clientX / window.innerWidth - .5);
 
 
 
-let x =
-e.clientX-rect.left;
+const y =
 
-
-let y =
-e.clientY-rect.top;
+(e.clientY / window.innerHeight - .5);
 
 
 
-let centerX =
-rect.width/2;
+objects.forEach((obj,index)=>{
 
 
-let centerY =
-rect.height/2;
+    const speed = (index + 1) * 18;
 
 
+    obj.style.transform = `
 
-let rotateX =
-(y-centerY)/15;
+    translate3d(
 
+    ${x * speed}px,
 
-let rotateY =
-(centerX-x)/15;
+    ${y * speed}px,
 
+    0
 
+    )
 
-
-card.style.transform=
-
-`
-
-perspective(900px)
-
-rotateX(${rotateX}deg)
-
-rotateY(${rotateY}deg)
-
-translateY(-15px)
-
-`;
+    `;
 
 
 
 });
 
-
-
-
-
-card.addEventListener(
-"mouseleave",
-()=>{
-
-
-card.style.transform="";
-
-
-
-});
 
 
 });
@@ -306,42 +248,39 @@ card.style.transform="";
 
 
 
-
-// ===============================
+// ================================
 // SCROLL REVEAL
-// ===============================
+// ================================
 
 
-const reveal =
-document.querySelectorAll(
-".service-card,.project-card,.stats div,.process-grid div,.about-grid"
+const reveals = document.querySelectorAll(
+".reveal"
 );
 
 
 
-const observer =
-new IntersectionObserver(
+const observer = new IntersectionObserver(
 
-entries=>{
+(entries)=>{
 
 
 entries.forEach(entry=>{
 
 
-if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
 
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0)";
-
-
-observer.unobserve(
-entry.target
-);
+        entry.target.classList.add(
+            "active"
+        );
 
 
-}
+        observer.unobserve(
+            entry.target
+        );
+
+
+    }
 
 
 
@@ -349,7 +288,6 @@ entry.target
 
 
 },
-
 
 {
 
@@ -357,33 +295,18 @@ threshold:.15
 
 }
 
-
 );
 
 
 
 
 
-
-reveal.forEach(el=>{
-
-
-el.style.opacity="0";
-
-
-el.style.transform=
-"translateY(80px)";
-
-
-el.style.transition=
-"1s cubic-bezier(.16,1,.3,1)";
-
+reveals.forEach(el=>{
 
 
 observer.observe(el);
 
 
-
 });
 
 
@@ -394,151 +317,39 @@ observer.observe(el);
 
 
 
-// ===============================
-// 3D ICON FLOAT
-// ===============================
+// ================================
+// NAV BACKGROUND ON SCROLL
+// ================================
 
 
-const icons =
-document.querySelectorAll(
-".icon-3d"
-);
+const nav = document.querySelector(".nav");
 
 
 
-icons.forEach(
-(icon,index)=>{
+window.addEventListener("scroll",()=>{
 
 
-icon.animate(
-
-[
-
-{
-
-transform:
-"translateY(0) rotateY(0deg)"
-
-},
-
-{
-
-transform:
-"translateY(-12px) rotateY(180deg)"
-
-},
-
-{
-
-transform:
-"translateY(0) rotateY(360deg)"
-
-}
-
-],
+if(window.scrollY > 80){
 
 
-{
+nav.style.background =
+
+"rgba(3,3,3,.85)";
 
 
-duration:
-4000+(index*500),
+nav.style.backdropFilter=
 
-iterations:
-Infinity,
-
-easing:
-"ease-in-out"
+"blur(15px)";
 
 
 }
 
-
-);
-
+else{
 
 
-});
+nav.style.background=
 
-
-
-
-
-
-
-
-
-// ===============================
-// SIDE MENU ACTIVE
-// ===============================
-
-
-const sections =
-document.querySelectorAll(
-"section[id]"
-);
-
-
-const menuLinks =
-document.querySelectorAll(
-".side-links a"
-);
-
-
-
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-
-let current="";
-
-
-
-sections.forEach(section=>{
-
-
-let top =
-window.scrollY;
-
-
-let offset =
-section.offsetTop-300;
-
-
-
-if(top>=offset){
-
-current=
-section.getAttribute("id");
-
-}
-
-
-
-});
-
-
-
-
-menuLinks.forEach(link=>{
-
-
-link.style.color="#777";
-
-
-
-if(
-link.getAttribute("href")
-==
-"#"+current
-){
-
-
-link.style.color=
-"#00e5ff";
+"linear-gradient(black,transparent)";
 
 
 }
@@ -548,59 +359,47 @@ link.style.color=
 
 
 
-});
 
 
 
 
 
 
+// ================================
+// SMOOTH MAGNETIC BUTTON
+// ================================
 
 
-
-// ===============================
-// MAGNETIC BUTTONS
-// ===============================
-
-
-const magnetic =
-document.querySelectorAll(
-".main-btn,.circle-btn,.whatsapp-float"
+const buttons = document.querySelectorAll(
+".show-btn,.nav-btn"
 );
 
 
 
-magnetic.forEach(btn=>{
+buttons.forEach(btn=>{
 
 
-btn.addEventListener(
-"mousemove",
-(e)=>{
+btn.addEventListener("mousemove",(e)=>{
 
 
-let box =
-btn.getBoundingClientRect();
+const rect = btn.getBoundingClientRect();
 
 
+const x = e.clientX - rect.left - rect.width/2;
 
-let x =
-e.clientX-box.left-box.width/2;
-
-
-let y =
-e.clientY-box.top-box.height/2;
+const y = e.clientY - rect.top - rect.height/2;
 
 
 
-btn.style.transform=
+btn.style.transform =
 
 `
 
 translate(
 
-${x*.2}px,
+${x*.15}px,
 
-${y*.2}px
+${y*.15}px
 
 )
 
@@ -615,33 +414,28 @@ scale(1.05)
 
 
 
-
-btn.addEventListener(
-"mouseleave",
-()=>{
+btn.addEventListener("mouseleave",()=>{
 
 
 btn.style.transform="";
 
 
+});
+
 
 });
 
 
 
-});
 
 
 
 
 
 
-
-
-
-// ===============================
-// INTRO ANIMATION
-// ===============================
+// ================================
+// PAGE LOAD CINEMATIC INTRO
+// ================================
 
 
 window.addEventListener(
@@ -650,8 +444,45 @@ window.addEventListener(
 
 
 document.body.classList.add(
-"ready"
+"loaded"
 );
 
 
 });
+
+
+
+
+
+
+
+// ================================
+// MOBILE MENU
+// ================================
+
+
+const menu =
+document.querySelector(".menu-button");
+
+
+
+const links =
+document.querySelector(".nav-links");
+
+
+
+if(menu){
+
+
+menu.addEventListener("click",()=>{
+
+
+links.classList.toggle(
+"open"
+);
+
+
+});
+
+
+}
